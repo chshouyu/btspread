@@ -11,7 +11,7 @@
     "grunt-contrib-cssmin": "^0.9.0",
     "grunt-contrib-uglify": "~0.2.7"
   },
-  "homepage": "",
+  "homepage": "https://github.com/chshouyu/btspread",
   "author": {
     "name": "chshouyu"
   },
