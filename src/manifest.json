@@ -1,0 +1,12 @@
+{
+    "manifest_version": 2,
+    "name": "btspread",
+    "description": "更加方便的获取下载地址",
+    "version": "1.0.0",
+    "permissions": [],
+    "content_scripts": [{
+        "matches": ["http://www.btspread.com/search/*"],
+        "js": ["js/jquery-2.1.0.min.js", "js/content.js"],
+        "css": ["css/page.css"]
+    }]
+}
