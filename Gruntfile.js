@@ -15,8 +15,8 @@ module.exports = function(grunt) {
                 banner: '<%= banner %>'
             },
             build: {
-                src: 'src/js/content.js',
-                dest: 'build/js/content.js'
+                src: 'src/js/content2.js',
+                dest: 'build/js/content2.js'
             }
         },
         cssmin: {
@@ -34,7 +34,7 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     cwd: "src/",
-                    src: ['manifest.json', 'js/jquery-2.1.0.min.js'],
+                    src: ['manifest.json'],
                     dest: 'build/',
                     filter: 'isFile'
                 }]

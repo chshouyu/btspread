@@ -6,7 +6,7 @@
     "permissions": [],
     "content_scripts": [{
         "matches": ["http://www.btspread.com/search/*"],
-        "js": ["js/jquery-2.1.0.min.js", "js/content.js"],
+        "js": ["js/content2.js"],
         "css": ["css/page.css"]
     }]
 }
