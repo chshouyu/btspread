@@ -7,24 +7,21 @@ var makeArray = function(list) {
 
 var ajax = function(opts) {
     var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function() {
-        var completed = 4;
-        if (xhr.readyState === completed) {
-            if (xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) {
-                opts.success(xhr.responseText, xhr);
-            } else {
-                opts.error(xhr.responseText, xhr);
-            }
+    xhr.onload = function() {
+        if (this.status === 200) {
+            opts.success(opts.responseType ? this.response : this.responseText, this);
+        } else {    
+            opts.error(this.responseText, this);
         }
     };
+    if (opts.timeout && opts.ontimeout) {
+        xhr.timeout = opts.timeout;
+        xhr.ontimeout = opts.ontimeout;
+    }
+    xhr.responseType = opts.responseType || 'text';
+    xhr.onprogress = opts.onprogress || function() {};
     xhr.open(opts.method, opts.url, true);
     xhr.send(opts.data);
-};
-
-var parseHTML = function(htmlString) {
-    var c = document.createElement('div');
-    c.innerHTML = htmlString;
-    return c.children;
 };
 
 if (!searchInput.value.trim()) {
@@ -42,41 +39,21 @@ if (primaryBtns.length > 0) {
         elem.parentNode.appendChild(a);
     });
 
-    var handlePage = function(htmlString) {
-        var pageDom = parseHTML(htmlString),
-            targetLink = '##',
-            magnetLink;
-        makeArray(pageDom).forEach(function(elem) {
-            if (magnetLink = elem.querySelector('#magnetLink')) {
-                targetLink = magnetLink.textContent;
-                return false;
-            }
-        });
-
+    var handlePage = function(html) {
+        var targetLink = '##',
+            magnetLink = html.querySelector('#magnetLink');
+            targetLink = magnetLink.innerText;
         target.classList.remove('get-target');
         target.classList.remove('btn-primary');
         target.classList.add('btn-success');
         target.href = targetLink;
         target.textContent = 'Link';
-        var tr = document.createElement('tr'),
-            td = document.createElement('td'),
-            input = document.createElement('input');
-        input.type = 'text';
-        input.style.width = '910px';
-        input.style.fontSize = '12px;';
-        input.style.marginBottom = '0px';
-        input.style.padding = '2px 3px';
-        input.value = targetLink;
-        input.className = 'link-address';
-        td.setAttribute('colspan', '4');
-        td.style.borderTop = '0px';
-        td.style.paddingTop = '2px';
-        td.appendChild(input);
-        tr.appendChild(td);
+        var tr = document.createElement('tr');
+        tr.innerHTML = '<td colspan="4" style="border-top:0;padding-top:2px;"><input class="link-address" type="text" style="width:910px;fon-size:12px;margin-bottom:0;padding:2px 3px;" value="' + targetLink + '"></td>';
         var parentTr = target.parentNode.parentNode;
         var tbody = parentTr.parentNode;
         tbody.insertBefore(tr, parentTr.nextSibling);
-        input.select();
+        tr.querySelector('.link-address').select();
     };
 
     var requestPage = function(e) {
@@ -88,10 +65,11 @@ if (primaryBtns.length > 0) {
             ajax({
                 url: requestUrl,
                 method: 'GET',
-                success: function(htmlString) {
-                    handlePage(htmlString);
+                success: function(html) {
+                    handlePage(html);
                 },
-                error: function() {}
+                error: function() {},
+                responseType: 'document'
             });
         }
     };
