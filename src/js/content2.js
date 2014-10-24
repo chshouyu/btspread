@@ -53,7 +53,7 @@ if (primaryBtns.length > 0) {
         target.href = targetLink;
         target.textContent = 'Link';
         var tr = document.createElement('tr');
-        tr.innerHTML = '<td colspan="4" style="border-top:0;padding-top:2px;"><input class="link-address" type="text" style="width:910px;fon-size:12px;margin-bottom:0;padding:2px 3px;" value="' + targetLink + '"></td>';
+        tr.innerHTML = '<td colspan="4" class="magnet-td"><input class="link-address" type="text" value="' + targetLink + '"></td>';
         var parentTr = target.parentNode.parentNode;
         var tbody = parentTr.parentNode;
         tbody.insertBefore(tr, parentTr.nextSibling);

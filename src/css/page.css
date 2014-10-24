@@ -1,3 +1,5 @@
 
 .container .magnet-list .action { width: 150px;}
 .container .magnet-list .btn-get-target { width:36px; margin-left:7px;}
+.container .magnet-list .magnet-td { border-top:0;padding-top:2px;}
+.container .magnet-list .link-address { width:910px;fon-size:12px;margin-bottom:0;padding:2px 3px;}
