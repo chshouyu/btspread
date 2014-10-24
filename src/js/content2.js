@@ -8,7 +8,7 @@ var makeArray = function(list) {
 var ajax = function(opts) {
     var xhr = new XMLHttpRequest();
     xhr.onload = function() {
-        if (this.status === 200) {
+        if (this.status === 200 || this.status === 304) {
             opts.success(opts.responseType ? this.response : this.responseText, this);
         } else {    
             opts.error(this.responseText, this);
