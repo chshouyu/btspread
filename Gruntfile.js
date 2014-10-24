@@ -1,6 +1,7 @@
 /*global module:false*/
 module.exports = function(grunt) {
-
+    require('time-grunt')(grunt);
+    require('load-grunt-tasks')(grunt);
     // Project configuration.
     grunt.initConfig({
         // Metadata.
@@ -42,12 +43,6 @@ module.exports = function(grunt) {
         },
         clean: ['build/']
     });
-
-    // These plugins provide necessary tasks.
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-clean');
 
     // Default task.
     grunt.registerTask('build', ['clean', 'cssmin:build', 'uglify:build', 'copy:build']);
