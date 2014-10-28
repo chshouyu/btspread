@@ -16,8 +16,13 @@ module.exports = function(grunt) {
                 banner: '<%= banner %>'
             },
             build: {
-                src: 'src/js/content2.js',
-                dest: 'build/js/content2.js'
+                files: [{
+                    expand: true,
+                    cwd: "src/js",
+                    src: ['*.js'],
+                    dest: 'build/js',
+                    filter: 'isFile'
+                }]
             }
         },
         cssmin: {
