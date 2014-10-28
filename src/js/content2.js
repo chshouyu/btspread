@@ -24,10 +24,6 @@ var ajax = function(opts) {
     xhr.send(opts.data);
 };
 
-searchInput.addEventListener('click', function(e) {
-    e.stopPropagation();
-}, false);
-
 if (!searchInput.value.trim()) {
     searchInput.focus();
 }
@@ -62,7 +58,6 @@ if (primaryBtns.length > 0) {
 
     var requestPage = function(e) {
         e.preventDefault();
-        e.stopPropagation();
         target = e.target;
         if (target.classList.contains('get-target')) {
             target.textContent = '...';

@@ -3,10 +3,13 @@
     "name": "btspread",
     "description": "更加方便的获取下载地址",
     "version": "1.1.0",
-    "permissions": [],
+    "permissions": ["webRequest", "webRequestBlocking", "*://*.btspread.com/*"],
     "content_scripts": [{
         "matches": ["http://www.btspread.com/search/*"],
         "js": ["js/content2.js"],
         "css": ["css/page.css"]
-    }]
+    }],
+    "background": {
+        "scripts": ["js/background.js"]
+    }
 }
