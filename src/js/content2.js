@@ -73,12 +73,15 @@ if (primaryBtns.length > 0) {
             });
         }
     };
-
+    var focusTimer;
     var focusLink = function(e) {
         var input;
-        if ((input = e.target).classList.contains('link-address')) {
-            input.select();
-        }
+        clearTimeout(focusTimer);
+        focusTimer = setTimeout(function() {
+            if ((input = e.target).classList.contains('link-address')) {
+                input.select();
+            }    
+        }, 200);
     };
 
     document.querySelector('.magnet-list').addEventListener('click', requestPage, false);
