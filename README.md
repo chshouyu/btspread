@@ -19,7 +19,6 @@
 
 ## 使用
 
-以下两种方式选择一种即可
+下载地址：[btspread-v1.1.2](https://github.com/chshouyu/btspread/releases)
 
-* 如果你清楚插件的开发过程，可以把`src`目录作为开发目录加载即可
-* 在扩展程序管理页面，将`build.crx`文件拖到页面中，确认添加即可
+在扩展程序管理页面，将`btspread-v1.1.2.crx`文件拖到页面中，确认添加即可
