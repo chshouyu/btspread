@@ -19,6 +19,6 @@
 
 ## 使用
 
-下载地址：[btspread-v1.1.2](https://github.com/chshouyu/btspread/releases)
+下载地址：[btspread-v1.2.0](https://github.com/chshouyu/btspread/releases)
 
-在扩展程序管理页面，将`btspread-v1.1.2.crx`文件拖到页面中，确认添加即可
+在扩展程序管理页面，将`btspread-v1.2.0.crx`文件拖到页面中，确认添加即可
