@@ -13,6 +13,7 @@
         "css": ["css/page.css"]
     }],
     "background": {
+        "persistent": false,
         "scripts": ["js/background.js"]
     }
 }
